@@ -1,0 +1,30 @@
+{
+  "name": "mt-nabla-pm2-logger",
+  "version": "1.0.0",
+  "description": "Nabla node PM2 site loggr",
+  "main": "src/index.js",
+  "author": "Obediah Klopfenstein",
+  "license": "MIT",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development nodemon ./src/index.js",
+    "start:production": "pm2 start $CONFIG_FILE"
+  },
+  "keywords": [
+    "node",
+    "node.js",
+    "nabla",
+    "moontower",
+    "pm2"
+  ],
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "joi": "^17.9.1",
+    "mt-nabla-tx": "https://github.com/obe711/mt-nabla-tx",
+    "tail": "^2.2.6",
+    "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
