@@ -50,7 +50,7 @@ const nablaTx = new NablaTx({ logger, port: config.nablaPort });
    * @param {string} data 
    */
   async function handleLogFile(data) {
-    const newLog = JSON.parse(data.trim())[0];
+    const newLog = JSON.parse(data.trim());
     logger.info(`${newLog}`);
     nablaTx.pm2Log(config.siteName, newLog);
   }
