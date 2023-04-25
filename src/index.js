@@ -15,7 +15,9 @@ const config = require("./config/config");
 const logger = require("./config/logger");
 const NablaTx = require("mt-nabla-tx");
 
-const nablaTx = new NablaTx({ logger, port: config.nablaPort });
+const devLogger = config.env !== "production" ? logger : null
+
+const nablaTx = new NablaTx({ logger: devLogger, port: config.nablaPort });
 
 
 (async () => {
@@ -24,7 +26,7 @@ const nablaTx = new NablaTx({ logger, port: config.nablaPort });
 
   /* Follow Out Log */
   const pm2OutLogPath = path.join(userHomeDir, ".pm2", "logs", config.pm2.outLogFile);
-  const outLogTail = new Tail(pm2OutLogPath, { logger });
+  const outLogTail = new Tail(pm2OutLogPath, { logger: devLogger });
   /* Logfile change */
   outLogTail.on("line", handleLogFile);
   /* Error event */
@@ -34,7 +36,7 @@ const nablaTx = new NablaTx({ logger, port: config.nablaPort });
 
   /* Follow Error Log */
   const pm2ErrorLogPath = path.join(userHomeDir, ".pm2", "logs", config.pm2.errorLogFile);
-  const errorLogTail = new Tail(pm2ErrorLogPath, { logger });
+  const errorLogTail = new Tail(pm2ErrorLogPath, { logger: devLogger });
   /* Logfile change */
   errorLogTail.on("line", handleLogFile);
   /* Error event */
