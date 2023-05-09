@@ -1,0 +1,20 @@
+{
+  "apps": [
+    {
+      "name": "LOG-example",
+      "script": "./src/index.js",
+      "instances": 1,
+      "autorestart": true,
+      "watch": false,
+      "time": true,
+      "env": {
+        "NODE_ENV": "production",
+        "OUT_LOG_FILE": "example-out.log",
+        "ERROR_LOG_FILE": "example-error.log",
+        "SITE_NAME": "example.com"
+      },
+      "log_type": "json",
+      "merge_logs": true
+    }
+  ]
+}
